@@ -1,0 +1,166 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/1beb5182c0.js" crossorigin="anonymous"></script>
+    <script>
+        function validateForm() {
+            let username = document.getElementById('username').value;
+            let Password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('confirm_password').value;
+            let country = document.getElementById('country').value;
+            let city = document.getElementById('city').value;
+            let address = document.getElementById('address').value;
+            let mobile = document.getElementById('mobile').value;
+            let termsConditions = document.getElementById('terms_conditions').checked;
+
+            let isValid = true;
+
+            if (username === "") {
+                document.getElementById("username_error").textContent = "(Username is required)";
+                isValid = false;
+            } else {
+                document.getElementById("username_error").textContent = "";
+            }
+
+            if (Password === "") {
+                document.getElementById("password_error").textContent = "(Password is required)";
+                isValid = false;
+            } else {
+                document.getElementById("password_error").textContent = "";
+            }
+
+            if (confirmPassword === "") {
+                document.getElementById("confirm_password_error").textContent = "(Confirm password is required)";
+                isValid = false;
+            } else {
+                document.getElementById("confirm_password_error").textContent = "";
+            }
+
+            if (country === "") {
+                document.getElementById("country_error").textContent = "(Country is required)";
+                isValid = false;
+            } else {
+                document.getElementById("country_error").textContent = "";
+            }
+
+            if (city === "") {
+                document.getElementById("city_error").textContent = "(City is required)";
+                isValid = false;
+            } else {
+                document.getElementById("city_error").textContent = "";
+            }
+
+            if (address === "") {
+                document.getElementById("address_error").textContent = "(Address is required)";
+                isValid = false;
+            } else {
+                document.getElementById("address_error").textContent = "";
+            }
+
+            if (mobile === "") {
+                document.getElementById("mobile_error").textContent = "(Mobile number is required)";
+                isValid = false;
+            } else {
+                document.getElementById("mobile_error").textContent = "";
+            }
+
+            if (!termsConditions) {
+                document.getElementById("termscond_error").textContent = "(Please accept terms and conditions)";
+                isValid = false;
+            } else {
+                document.getElementById("termscond_error").textContent = "";
+            }
+
+            if (!isValid) {
+                var requiredFields = document.querySelectorAll(".form-control");
+                for (var i = 0; i < requiredFields.length; i++) {
+                    if (requiredFields[i].value === "") {
+                        requiredFields[i].classList.add("highlight-error");
+                    } else {
+                        requiredFields[i].classList.remove("highlight-error");
+                    }
+                }
+            }
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <main>
+        <div class="cont-form">
+            <form method="post" onsubmit="return validateForm();">
+                <h3>Registration Form</h3><br />
+                <label for="username">Username: &nbsp;&nbsp;
+                    <span id="username_error" class="validation_message"></span>
+                </label>
+                <input 
+                       type="text" 
+                       id="username" 
+                       name="username" 
+                       placeholder="Enter your username"
+                />
+                <label for="password">Password: &nbsp;&nbsp;
+                    <span id="password_error" class="validation_message"></span>
+                </label>
+                <input 
+                       type="password" 
+                       id="password" 
+                       name="password" 
+                       placeholder="Enter your password"
+                />
+                <label for="confirm_password">Confirm Password: &nbsp;&nbsp;
+                    <span id="confirm_password_error" class="validation_message"></span>
+                </label>
+                <input 
+                       type="password" 
+                       id="confirm_password" 
+                       name="confirm_password" 
+                       placeholder="Confirm your password"
+                />
+                <label for="country">Country:&nbsp;&nbsp;
+                    <span id="country_error" class="validation_message"></span>
+                </label>
+                <select id="country" name="country">
+                    <option value="">Select Country</option>
+                    <option value="country1">Country 1</option>
+                    <option value="country2">Country 2</option>
+                </select>
+                <label for="city">City:&nbsp;&nbsp;
+                    <span id="city_error" class="validation_message"></span>
+                </label>
+                <select id="city" name="city">
+                    <option value="">Select City</option>
+                    <option value="city1">City 1</option>
+                    <option value="city2">City 2</option>
+                </select>
+                <label for="address">Address:&nbsp;&nbsp;
+                    <span id="address_error" class="validation_message"></span>
+                </label>
+                <textarea id="address" 
+                          name="address" 
+                          placeholder="Enter your address">
+                </textarea>
+                <label for="mobile">Mobile:&nbsp;&nbsp;
+                    <span id="mobile_error" class="validation_message"></span>
+                </label>
+                <input type="number" 
+                       id="mobile" 
+                       name="mobile" 
+                       placeholder="Enter your mobile number"
+                />
+                <label>
+                    <br />
+                    <input name="terms_conditions"
+                           value="open-source-community"
+                           id="terms_conditions"
+                           type="checkbox"
+                           style="cursor: pointer"
+                           class="input-checkbox" />&nbsp;&nbsp;&nbsp;I accept the terms and conditions
+                    <span id="termscond_error" class="validation_message"></span>
+                </label>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </main>
+</body>
+</html>
